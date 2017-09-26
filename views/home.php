@@ -8,13 +8,15 @@
   </head>
   <body>
     <pre>
-      <?php //print_r($forecast); ?>
+      <?php print_r($forecast); ?>
     </pre>
     <main class="container py-5 text-center">
       <h1>
         DarkSky API
       </h1>
-      <div class="card p-4 my-5 mx-auto" style="max-width: 320px;">
+      <div class="card text-white bg-dark p-0 my-5 mx-auto" style="max-width: 320px;">
+        <p class="lead"> Currently: </p>
+        <!-- <p><?php echo $forecast['currently']['icon']; ?></p> -->
         <h2 class="display-1 mb-0">
           <?php echo round($forecast['currently']['temperature']); ?>&deg;
         </h2>
@@ -22,9 +24,15 @@
           <?php echo $forecast['currently']['summary']; ?>
         </p>
         <p class="lead">
+          Humidity: <?php echo round($forecast['currently']['humidity']); ?> %
+        </p>
+        <p class="lead">
           Wind Speed: <?php echo round($forecast['currently']['windSpeed']); ?> MPH
         </p>
-        <p><?php echo $feels; ?></p>
+       <!--  <p><?php echo $feels; ?></p> -->
+      </div>
+      <div class="lead">
+          <?php echo $forecast['daily']['summary']; ?>
       </div>
       <div class="row">
         <?php foreach($forecast['daily']['data'] as $day): ?>
